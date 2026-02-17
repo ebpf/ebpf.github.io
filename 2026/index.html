@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBPF'26 — 4th eBPF Workshop</title>
+    <link rel="stylesheet" href="/main.css">
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navContainer = document.querySelector('.nav-container');
+
+            hamburger.addEventListener('click', function() {
+                navContainer.classList.toggle('active');
+            });
+            navContainer.addEventListener('click', function(e) {
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header">
+        <div class="logo"><a href="/2026"><h1>eBPF'26</h1></a></div>
+        <button class="hamburger" aria-label="Menu">☰</button>
+        <nav>
+            <ul class="nav-container">
+                <li><a href="/2026">Home</a></li>
+                <li><a href="#cfp">Call for Papers</a></li>
+                <li><a href="#dates">Dates</a></li>
+                <li><a href="#organizers">Organizers</a></li>
+                <li class="dropdown">
+                    <a href="#past">Past Workshops</a>
+                    <div class="dropdown-content">
+                        <a target="_blank" href="https://conferences.sigcomm.org/sigcomm/2025/workshop/ebpf/">eBPF'25</a>
+                        <a target="_blank" href="https://conferences.sigcomm.org/sigcomm/2024/workshop/ebpf/">eBPF'24</a>
+                        <a target="_blank" href="https://conferences.sigcomm.org/sigcomm/2023/workshop-ebpf.html">eBPF'23</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="home">
+            <div class="section-header top-header"><h1>4th Workshop on eBPF and Kernel Extensions</h1></div>
+            <div class="highlight-box">
+            <p>September 29, 2026<br>Prague, Czech Republic<br>In conjunction with <a href="https://sigops.org/s/conferences/sosp/2026/">ACM SOSP'26</a>!</p>
+            </div>
+            <p>
+                Kernel extensions are seeing a renewed interest in the research community with the advent of eBPF (extended Berkeley Packet Filter).
+                eBPF has been gaining popularity in industry for its safety and efficiency in programming end-host network and OS stacks.
+                Several companies have adopted it for use in production-grade applications, including high-performance networking, security monitoring and enforcement, profiling, and CPU scheduling.
+            </p>
+            <p>
+                Despite the widespread adoption of these kernel extensions, many challenges remain.
+                The static analysis of extensions is growing increasingly complex, yet it continues to suffer from a high rate of false positives, hindering development.
+                Programming hooks and interfaces with the kernel restrict the versatility of extensions.
+                The performance overhead of extensions can also limit high-throughput use cases.
+            </p>
+            <p>
+                The workshop will bring together a diverse and interdisciplinary audience, including researchers in operating systems, programming languages, computer security, as well as experts in networking, formal specification, and verification.
+                It will be a venue to learn, network, and exchange ideas with others in the community, advancing the state-of-the-art in this exciting and rapidly evolving technology.
+            </p>
+        </section>
+
+        <section id="cfp">
+            <div class="section-header"><h2>Call for Papers</h2></div>
+            <p>TBD</p>
+        </section>
+
+        <section id="dates">
+            <div class="section-header"><h2>Dates</h2></div>
+            <table>
+                <tr>
+                    <th>Event</th>
+                    <th>Date</th>
+                </tr>
+                <tr>
+                    <td>Submission deadline</td>
+                    <td>TBD</td>
+                </tr>
+                <tr>
+                    <td>Author notification</td>
+                    <td>TBD</td>
+                </tr>
+                <tr>
+                    <td>Camera-ready deadline</td>
+                    <td>TBD</td>
+                </tr>
+                <tr>
+                    <td>Workshop</td>
+                    <td>September 29, 2026</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="organizers">
+            <div class="section-header"><h2>Organizers</h2></div>
+            <table>
+                <tr>
+                    <th>General & Steering Committee Co-Chairs</th>
+                    <th>Institution</th>
+                </tr>
+                <tr>
+                    <td>Paul Chaignon</td>
+                    <td>Isovalent at Cisco</td>
+                </tr>
+                <tr>
+                    <td>Marios Kogias</td>
+                    <td>Imperial College London</td>
+                </tr>
+                <tr>
+                    <td>Sebastiano Miano</td>
+                    <td>Nvidia</td>
+                </tr>
+                <tr>
+                    <td>Srinivas Narayana</td>
+                    <td>Rutgers University</td>
+                </tr>
+                <tr>
+                    <td>Aurojit Panda</td>
+                    <td>New York University</td>
+                </tr>
+                <tr>
+                    <td>Gianni Antichi</td>
+                    <td>Politecnico di Milano</td>
+                </tr>
+                <tr>
+                    <th>Technical Program Committee</th>
+                    <th>Institution</th>
+                </tr>
+                <tr>
+                    <td>TBD</td>
+                    <td></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 eBPF Workshop. All rights reserved.</p>
+    </footer>
+</body>
+</html>
