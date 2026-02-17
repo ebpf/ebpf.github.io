@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBPF'26 — Call for Papers</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navContainer = document.querySelector('.nav-container');
+
+            hamburger.addEventListener('click', function() {
+                navContainer.classList.toggle('active');
+            });
+            navContainer.addEventListener('click', function(e) {
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id=G-34GDH8C7X6"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-34GDH8C7X6');
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header">
+        <div class="logo"><a href="/2026"><h1>eBPF'26</h1></a></div>
+        <button class="hamburger" aria-label="Menu">☰</button>
+        <nav>
+            <ul class="nav-container">
+                <li><a href="/2026">Home</a></li>
+                <li><a href="cfp.html">Call for Papers</a></li>
+                <li><a href="index.html#dates">Dates</a></li>
+                <li><a href="index.html#organizers">Organizers</a></li>
+                <li class="dropdown">
+                    <a href="past-workshops.html">Past Workshops</a>
+                    <div class="dropdown-content">
+                        <a target="_blank" href="https://conferences.sigcomm.org/sigcomm/2025/workshop/ebpf/">eBPF'25</a>
+                        <a target="_blank" href="https://conferences.sigcomm.org/sigcomm/2024/workshop/ebpf/">eBPF'24</a>
+                        <a target="_blank" href="https://conferences.sigcomm.org/sigcomm/2023/workshop-ebpf.html">eBPF'23</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="cfp">
+            <div class="section-header top-header"><h1>Call for Papers</h1></div>
+            <p>
+                Kernel extensions are seeing a renewed interest in the research community with the advent of eBPF (extended Berkeley Packet Filter).
+                eBPF has been gaining popularity in industry for its safety and efficiency in programming end-host network and OS stacks.
+                Several companies have adopted it for use in production-grade applications, including high-performance networking, security monitoring and enforcement, profiling, and CPU scheduling.
+            </p>
+            <p>
+                Despite the widespread adoption of these kernel extensions, many challenges remain.
+                The static analysis of extensions is growing increasingly complex, yet it continues to suffer from a high rate of false positives, hindering development.
+                Programming hooks and interfaces with the kernel restrict the versatility of extensions.
+                The performance overhead of extensions can also limit high-throughput use cases.
+            </p>
+            <p>
+                The workshop will bring together a diverse and interdisciplinary audience, including researchers in operating systems, programming languages, computer security, as well as experts in networking, formal specification, and verification.
+                It will be a venue to learn, network, and exchange ideas with others in the community, advancing the state-of-the-art in this exciting and rapidly evolving technology.
+            </p>
+            <p>
+                We welcome contributions including, but not limited to, the following topics:
+                <ul>
+                <li>Better approaches to eBPF program safety verification.</li>
+                <li>Emerging use cases of kernel extensions in networking, security, CPU scheduling, and smart contracts.</li>
+                <li>Techniques to optimize the performance of eBPF programs.</li>
+                <li>Security implications of kernel extensions.</li>
+                <li>Usage of hardware security or performance features to benefit eBPF.</li>
+                <li>Approaches to improving the JIT compilation of eBPF programs.</li>
+                <li>Techniques to simplify the development of eBPF programs.</li>
+                <li>Case studies and real-world deployments of eBPF.</li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="instructions">
+            <div class="section-header"><h2>Submission instructions</h2></div>
+            <p>
+                We are looking for two-types of submissions:
+                <ul>
+                <li>
+                    Research papers of up to 6 pages.
+                    Submissions must be original, unpublished work, that have not been concurrently submitted to other venues.
+                    Workshop papers will be published in the ACM Digital Library and are thus considered published work.
+                    Note that ACM has made a transition towards <a href="https://libraries.acm.org/">open access publications</a>.
+                    Papers with a corresponding author from an ACM Open member institution will not be subject to Article Processing Charges. 
+                </li>
+                <li>
+                    Poster abstracts of up to 2 pages, submitted in the same format as the workshop papers.
+                    We are particularly interested in early-stage findings, position papers, and works that are still in progress.
+                    This segment is designed for authors to showcase their preliminary or emerging ideas in a concise, impactful manner, and get early-stage feedback at the workshop.
+                    As such, accepted posters will be presented during the dedicated poster session of the SOSP conference.
+                    The poster boards are 70"x46", so anything that fits in that space will work.
+                    48"x36" (or 36"x48") is recommended, but participants are welcome to use whatever dimensions they like, so long as it fits on the poster board.</li>
+                </ul>
+            </p>
+            <p>
+                Both types of submissions can use as many additional pages as necessary for citations, and should be written using <a href="https://sigops.org/s/conferences/sosp/2026/cfp.html#formatting">the SOSP 2026 formatting rules</a>.
+                All submissions are <a href="https://sigops.org/s/conferences/sosp/2026/cfp.html#anonymity">double-blind</a>.
+                The program committee will review papers to determine their relevance to the workshop, their quality, and the likelihood that they will elicit discussion among the attendees.
+                At least one author from each accepted submission must attend the workshop to present and discuss their work.
+            </p>
+            <p>Please submit your papers via <a href="https://ebpf26.hotcrp.com">ebpf26.hotcrp.com</a>.</p>
+        </section>
+
+        <section id="dates">
+            <div class="section-header"><h2>Dates</h2></div>
+            <table>
+                <tr>
+                    <th>Event</th>
+                    <th>Date</th>
+                </tr>
+                <tr>
+                    <td>Submission deadline</td>
+                    <td>June 19, 2026</td>
+                </tr>
+                <tr>
+                    <td>Author notification</td>
+                    <td>July 24, 2026</td>
+                </tr>
+                <tr>
+                    <td>Camera-ready deadline</td>
+                    <td>August 7, 2026</td>
+                </tr>
+                <tr>
+                    <td>Workshop</td>
+                    <td>September 29, 2026</td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <footer>
+        <p>Last updated on February 23, 2026.</p>
+    </footer>
+</body>
+</html>
