@@ -19,7 +19,15 @@
                     this.classList.remove('active');
                 }
             });
+
+            document.getElementById('organizers-table').addEventListener('click', function(e) {
+                const row = e.target.closest('tr[data-url]');
+                if (row) {
+                    window.location.href = row.getAttribute('data-url');
+                }
+            });
         });
+
     </script>
     <script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id=G-34GDH8C7X6"></script>
     <script type="text/javascript">
@@ -106,32 +114,32 @@
         <section id="organizers">
             <div class="section-header"><h2>Organizers</h2></div>
             <a class="contact" href="mailto:paul.chaignon@gmail.com,m.kogias@imperial.ac.uk,gianni.antichi@polimi.it,apanda@cs.nyu.edu,smiano@nvidia.com,sn624@cs.rutgers.edu?subject=eBPF'26: ">Contact the organizers</a>
-            <table>
+            <table id="organizers-table">
                 <tr>
                     <th>General & Steering Committee Co-Chairs</th>
                     <th>Institution</th>
                 </tr>
-                <tr>
+                <tr data-url="https://pchaigno.github.io">
                     <td>Paul Chaignon</td>
                     <td>Isovalent at Cisco</td>
                 </tr>
-                <tr>
+                <tr data-url="https://marioskogias.github.io">
                     <td>Marios Kogias</td>
                     <td>Imperial College London</td>
                 </tr>
-                <tr>
+                <tr data-url="https://sebymiano.github.io">
                     <td>Sebastiano Miano</td>
                     <td>Nvidia</td>
                 </tr>
-                <tr>
+                <tr data-url="https://people.cs.rutgers.edu/~sn624/">
                     <td>Srinivas Narayana</td>
                     <td>Rutgers University</td>
                 </tr>
-                <tr>
+                <tr data-url="https://cs.nyu.edu/~apanda/">
                     <td>Aurojit Panda</td>
                     <td>New York University</td>
                 </tr>
-                <tr>
+                <tr data-url="https://gianniantichi.github.io">
                     <td>Gianni Antichi</td>
                     <td>Politecnico di Milano</td>
                 </tr>
@@ -139,16 +147,136 @@
                     <th>Technical Program Committee</th>
                     <th>Institution</th>
                 </tr>
+                <tr data-url="https://akshayn.xyz/">
+                    <td>Akshay Narayan</td>
+                    <td>Brown University</td>
+                </tr>
+                <tr data-url="https://www.asafcidon.com/">
+                    <td>Asaf Cidon</td>
+                    <td>Columbia University</td>
+                </tr>
+                <tr data-url="https://people.cs.vt.edu/djwillia/">
+                    <td>Dan Williams</td>
+                    <td>Virginia Tech</td>
+                </tr>
+                <tr data-url="https://zhou-diyu.github.io/">
+                    <td>Diyu Zhou</td>
+                    <td>Peking University</td>
+                </tr>
+                <tr data-url="https://people.rennes.inria.fr/Frederic.Besson/">
+                    <td>Frédéric Besson</td>
+                    <td>Inria</td>
+                </tr>
+                <tr data-url="http://lendulet.tmit.bme.hu/~retvari/">
+                    <td>Gábor Rétvári</td>
+                    <td>Budapest University of Technology and Economics</td>
+                </tr>
                 <tr>
-                    <td>To Be Announced</td>
-                    <td></td>
+                    <td>Giuseppe Lettieri</td>
+                    <td>University of Pisa</td>
+                </tr>
+                <tr data-url="https://haosun.info/">
+                    <td>Hao Sun</td>
+                    <td>ETH Zurich</td>
+                </tr>
+                <tr data-url="https://harishankarv.github.io/">
+                    <td>Harishankar Vishwanathan</td>
+                    <td>Rutgers University</td>
+                </tr>
+                <tr data-url="https://jingliu.xyz/">
+                    <td>Jing Liu</td>
+                    <td>Microsoft Research</td>
+                </tr>
+                <tr data-url="https://jorgenavas.github.io/">
+                    <td>Jorge A. Navas</td>
+                    <td>Certora</td>
+                </tr>
+                <tr data-url="https://who.paris.inria.fr/Julia.Lawall/">
+                    <td>Julia Lawall</td>
+                    <td>Inria</td>
+                </tr>
+                <tr data-url="https://dblp.org/pid/130/8462.html">
+                    <td>Kahina Lazri</td>
+                    <td>Orange</td>
+                </tr>
+                <tr data-url="https://kkourt.io/">
+                    <td>Kornilios Kourtis</td>
+                    <td>Isovalent at Cisco</td>
+                </tr>
+                <tr data-url="https://kkd.lol/">
+                    <td>Kumar Kartikeya Dwivedi</td>
+                    <td>EPFL</td>
+                </tr>
+                <tr data-url="https://mattbutrovi.ch/">
+                    <td>Matthew Butrovich</td>
+                    <td>Apple</td>
+                </tr>
+                <tr data-url="https://micchie.net/">
+                    <td>Michio Honda</td>
+                    <td>University of Edinburgh</td>
+                </tr>
+                <tr data-url="https://paulmck.livejournal.com/">
+                    <td>Paul E. McKenney</td>
+                    <td>Meta</td>
+                </tr>
+                <tr>
+                    <td>Prankur Gupta</td>
+                    <td>Meta</td>
+                </tr>
+                <tr data-url="https://qmo.fr/en/index.html">
+                    <td>Quentin Monnet</td>
+                    <td>Hedgehog</td>
+                </tr>
+                <tr data-url="https://rstutsman.github.io/">
+                    <td>Ryan Stutsman</td>
+                    <td>University of Utah</td>
+                </tr>
+                <tr data-url="https://pontarelli.di.uniroma1.it/">
+                    <td>Salvatore Pontarelli</td>
+                    <td>Sapienza University of Rome</td>
+                </tr>
+                <tr data-url="https://sanidhya.github.io/">
+                    <td>Sanidhya Kashyap</td>
+                    <td>EPFL</td>
+                </tr>
+                <tr data-url="https://shenghaoyuan.github.io/">
+                    <td>Shenghao Yuan</td>
+                    <td>Zhejiang University</td>
+                </tr>
+                <tr data-url="https://github.com/smagnani96">
+                    <td>Simone Magnani</td>
+                    <td>Isovalent at Cisco</td>
+                </tr>
+                <tr data-url="https://tfjmp.org/">
+                    <td>Thomas Pasquier</td>
+                    <td>University of British Columbia</td>
+                </tr>
+                <tr data-url="https://tianyin.github.io/">
+                    <td>Tianyin Xu</td>
+                    <td>University of Illinois at Urbana-Champaign</td>
+                </tr>
+                <tr data-url="https://blog.tohojo.dk/">
+                    <td>Toke Høiland-Jørgensen</td>
+                    <td>Red Hat</td>
+                </tr>
+                <tr data-url="https://cs.brown.edu/people/vpk/">
+                    <td>Vasileios P. Kemerlis</td>
+                    <td>Brown University</td>
+                </tr>
+                <tr data-url="https://research.redhat.com/blog/project_member/viktor-malik/">
+                    <td>Viktor Malik</td>
+                    <td>Red Hat</td>
+                </tr>
+                <tr data-url="https://github.com/YutaroHayakawa">
+                    <td>Yutaro Hayakawa</td>
+                    <td>Isovalent at Cisco</td>
                 </tr>
             </table>
         </section>
     </div>
 
     <footer>
-        <p>Last updated on February 23, 2026.</p>
+        <p>Last updated on April 20, 2026.</p>
     </footer>
 </body>
 </html>

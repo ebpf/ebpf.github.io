@@ -226,3 +226,7 @@ tr:hover {
 .contact:hover {
     background-color: #0e1b4d;
 }
+
+#organizers-table tr[data-url] {
+    cursor: pointer;
+}
