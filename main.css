@@ -230,3 +230,10 @@ tr:hover {
 #organizers-table tr[data-url] {
     cursor: pointer;
 }
+
+.papers li b {
+    cursor: pointer;
+}
+.papers li b:hover {
+    text-decoration: underline;
+}

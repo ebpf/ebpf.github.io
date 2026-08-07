@@ -19,7 +19,17 @@
                     this.classList.remove('active');
                 }
             });
-        });
+
+            document.querySelectorAll('.papers li b').forEach(function(li) {
+                li.addEventListener('click', function() {
+                    const blockquote = this.parentElement.querySelector('blockquote');
+                    if (blockquote) {
+                        blockquote.style.display = blockquote.style.display === 'none' ? 'block' : 'none';
+                    }
+                    event.preventDefault();
+                });
+            });
+        })
     </script>
     <script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id=G-34GDH8C7X6"></script>
     <script type="text/javascript">
@@ -61,14 +71,113 @@
     </header>
 
     <div class="container">
-        <section id="papers">
+        <section id="papers" class="papers">
             <div class="section-header top-header"><h1>Accepted Papers</h1></div>
-            To Be Announced
+            <ul>
+                <li>    
+                    <b>nbpf: Verified, Composable Policy Execution for GPU Collective Communication</b><br/>
+                    <i>Yusheng Zheng (UC Santa Cruz)</i>
+                    <blockquote style="display:none;">NCCL is the de facto standard for collective GPU communication in large-scale distributed training, relying heavily on plugins to customize runtime behavior. However, these plugins execute as unverified native code within NCCL's address space, risking job crashes, silent state corruption, and downtime from restarts during policy updates. Inspired by kernel extensibility models, we introduce nbpf, a verified, high-performance extension framework embedding a userspace eBPF runtime directly into NCCL's existing plugin interfaces, without modifying NCCL itself. nbpf offers load-time static verification to prevent unsafe plugin execution, structured cross-plugin maps enabling composable policies and closed-loop adaptation, and atomic policy hotreloads eliminating downtime previously required for policy updates. Evaluations on 8× NVIDIA B300 GPUs connected via NVLink demonstrate that nbpf imposes just 80–130 ns overhead per tuner decision (less than 0.03% of collective latency), prevents all tested unsafe plugin behaviors at loadtime, and enables a message-size-aware eBPF policy that improves AllReduce throughput by up to 27% over NCCL's default in the 4–128 MiB range.<br/><br/></blockquote>
+                </li>
+                <li>    
+                    <b>Proof-Carrying-BPF Programs for the eBPF Verifier</b><br/>
+                    <i>Yalu Cai, Santosh Nagarakatte (Rutgers University)</i>
+                    <blockquote style="display:none;">This paper proposes proof-carrying-BPF programs as a mechanism to increase the class of programs accepted by the Linux eBPF verifier without increasing its complexity. To accomplish this vision, we develop a userspace version of the kernel verifier and append it to the BPF backend. The BPF backend generates proofs with symbolic evaluation where the kernel verifier is not able to prove safety. The kernel verifier checks proofs with a in-kernel proof checker and accepts the program when the proof is valid. This coupling of the userspace BPF verifier to the BPF backend addresses the limitations of the recent BCF framework, such as latency due to multiple kernel-to-userspace transitions and the dormant verifier state during userspace verification. Our prototype can successfully verify 189 programs from Calico/Cilium suites that the kernel verifier previously rejected.<br/><br/></blockquote>
+                </li>
+                <li>    
+                    <b>XDP_CLONE: Efficient In-Driver Packet Duplication for eBPF-Accelerated Systems</b><br/>
+                    <i>Marco Mazzella, Vladimiro Paschali, Francesco Fazzari (Sapienza University), Beihao Zhou (University of Waterloo), Daniele De Sensi, Salvatore Pontarelli (Sapienza University)</i>
+                    <blockquote style="display:none;">The eBPF eXpress Data Path (XDP) enables high-performance packet processing by executing programmable logic early in the Linux networking stack. However, XDP does not support packet duplication, a key requirement for publish–subscribe systems and high-performance computing (HPC) applications relying on message broadcasting. To overcome this limitation, developers typically use the Traffic Control (TC) layer, where the bpf_clone_redirect() helper allows packet replication. TC operates after socket buffer (sk_buff) allocation, a major source of overhead, and requires the creation of additional buffers for each duplicated packet. In this work, we present XDP_CLONE, a system that performs packet duplication directly within the network driver, eliminating socket buffer allocation. This approach significantly reduces overhead and improves performance for eBPF network applications up to 2.3x.<br/><br/></blockquote>
+                </li>
+                <li>    
+                    <b>Quantifying the Code-Size Overhead of eBPF JIT Compilation</b><br/>
+                    <i>Hoang Duong (Ecole Polytechnique), Hao Sun, Zhendong Su (ETH Zurich)</i>
+                    <blockquote style="display:none;">eBPF allows user-defined programs to safely extend Linux kernel functionality at runtime, but its final machine code comes from a compilation pipeline that differs from native targets, and how efficient that pipeline is has no clear reference point. Our work constructs one: using the standard LLVM x86 backend as an approximate best case for code-generation quality, we compile nearly identical source through both the eBPF path (with kernel JIT) and a native path. We hold source logic, optimization level, and build configuration equal, so the two differ only in their backend target and can be compared fairly by code size. Applying this to Cilium datapath programs, the two pipelines stay nearly identical through the frontend and midend, which isolates the overhead almost entirely to backend code generation, where the eBPF output contains 27.6% more instructions and is 16.6% larger in bytes. The baseline then lets us attribute the gap to a few recurring causes (operand widening, address computation, memory copies, register pressure) and categorize each by root cause, as coming from the eBPF instruction set or from a less mature backend, or a mix of both. This pinpoints where the overhead occurs and provides a method to measure it for other eBPF workloads and backends. Because eBPF code runs in hot kernel paths, this overhead is worth reducing, and the baseline offers a stable reference for measuring how far eBPF code generation is from native quality and tracking that gap as backends mature, for other projects and workloads.<br/><br/></blockquote>
+                </li>
+                <li>    
+                    <b>Fun Optimizations for eBPF Programs and How to Enable Them</b><br/>
+                    <i>Farbod Shahinfar (Politecnico di Milano), Aurojit Panda (NYU), Gianni Antichi (Politecnico di Milano & Queen Mary University of London)</i>
+                    <blockquote style="display:none;">The eBPF runtime relies on a static program verifier to check safety properties of custom programs before they are executed in the kernel. We show that, in some cases, the verifier limits compiler optimizations because it cannot reason about the optimized code. Moreover, developers are forced to use costly abstractions to satisfy the verifier. We measure the performance overhead introduced by these restrictions and find that it can halve throughput in extreme cases. Finally, we propose an extension to the compilation process with a post-verification optimization phase to address this limitation.<br/><br/></blockquote>
+                </li>
+                <li>    
+                    <b>Characterizing and Bridging the Diagnostic Gap in eBPF Verifier</b><br/>
+                    <i>Yusheng Zheng (UC Santa Cruz), Zhengjie Ji (Virginia Tech), Weichen Tao (Telecom Paris), Xiangyu Gao (University of Washington), Jianchang Su, Wei Zhang (University of Connecticut), Andi Quinn (UC Santa Cruz), Dan Williams (Virginia Tech)</i>
+                    <blockquote style="display:none;">eBPF lets developers run custom programs inside the Linux kernel, where a verifier proves each program safe. However, when the verifier rejects a program, the unclear error makes repair challenging: the error reports where verification stopped, not where the program lost the proof the verifier required. To quantify this gap, we conduct an empirical study of 235 reproduced rejections, showing that 47% of rejections return only EINVAL, one error string maps to as many as nine distinct root causes, and 10 of the 12 root causes are eBPF-specific. Repair thus requires both domain knowledge and locating where the proof was lost, yet existing tools only help developers read the error. We present BPFocus, which reconstructs where the required proof was established and where it was lost from the verifier log, and prints a Rust-like diagnostic. To evaluate BPFocus and the ability of LLMs to help repair, we construct a benchmark of 75 LLM repair tasks. Current models achieve 0–37% one-shot success with the raw log, and replacing the log with the BPFocus localization improves repair by 11–21pp, suggesting that locating where the proof was lost is key to guiding repair.<br/><br/></blockquote>
+                </li>
+                <li>    
+                    <b>Netkit: Specializing Linux Packet Delivery for Container Networks</b><br/>
+                    <i>Daniel Borkmann, Paul Chaignon (Isovalent at Cisco)</i>
+                    <blockquote style="display:none;">Cloud-native microservices architectures rely on network namespaces for isolation, with the overhead of container communications remaining a critical performance bottleneck. While colocating containers on the same host mitigates some of this overhead, it cannot match the performance of communication within a single network namespace. Existing solutions either require application rewrites or fail to support the full Linux network stack expected by containerized applications.<br/><br/>
+
+                    In this paper, we present Netkit, an eBPF-based datapath that specializes the Linux networking stack to eliminate redundant backlog queue traversals during network namespace transitions. Netkit leverages eBPF to transparently redirect packets between namespaces, bypassing unnecessary buffering while preserving compatibility with existing container applications. Our implementation in the Linux kernel, integrated with minimal changes to the Cilium network plugin for Kubernetes, improves throughput by up to 37% and achieves parity between container-to-container and process-to-process communications, effectively closing the performance gap introduced by namespace isolation.<br/><br/></blockquote>
+                </li>
+                <li>    
+                    <b>Kunai: Toward a Verifier-Safe Layered DSL for Nested Encapsulation Packet Filtering on eBPF</b><br/>
+                    <i>Takeru Hayasaka (Japan Advanced Institute of Science and Technology, SAKURA Internet Inc.), Satoshi Uda (Japan Advanced Institute of Science and Technology), Ayako Hayasaka (Independent Researcher), Daisuke Kotani (Kyoto University)</i>
+                    <blockquote style="display:none;">Packet capture and network debugging require selecting the packets of interest early, inside the Linux kernel. However, pcap-filter, tcpdump's filter language, has no syntax for nested encapsulation, repeated occurrences of the same protocol, or variable-length lists and options whose field offsets change from packet to packet. Running a filter in the kernel also requires emitting bytecode that the Linux eBPF verifier accepts. For expressive filters, this is difficult because naive lowering is rejected.<br/><br/>
+
+                    We present Kunai, a packet-filter DSL together with a compiler that lowers its expressions to eBPF bytecode. A Kunai expression describes a packet's layer structure and field conditions together, and resolves each field's offset and type from protocol definitions written in a subset of P4. The compiler records every header's start offset at run time, bounds each variable-length scan by a compile-time constant, and places a verifier-compliant bounds check before every packet read.<br/><br/>
+
+                    We evaluated Kunai on filters spanning GTP-U, SRv6, Geneve, and TCP options. The generated bytecode was accepted by the verifier across six kernels, Linux 6.1 to 7.0, on both the XDP and tc attach points. It matched and rejected the intended packets, and, where pcap-filter can express the filter, ran within a few percent of pcap-filter in per-packet processing cost.<br/><br/>
+
+                    These results show that Kunai enables the Linux kernel to execute protocol-aware filters beyond what pcap-filter's structured syntax can express.<br/><br/></blockquote>
+                </li>
+                <li>    
+                    <b>Formal Specification of Linux eBPF Instruction Set Architecture in Sail</b><br/>
+                    <i>Yazhou Tang, Shenghao Yuan (Zhejiang University), Jean-Pierre Talpin (Inria), Mingshuai Chen (Zhejiang University)</i>
+                    <blockquote style="display:none;">eBPF has become a widely-used mechanism for extending the Linux kernel, and recent standardization efforts have produced the first draft of eBPF ISA standard. However, eBPF still lacks a formal reference specification with rigorous semantics. This paper presents a Sail formailzation of Linux eBPF ISA based on Linux 7.1. The model covers all sequential instructions in the Linux eBPF. From the same Sail source, we generate a human-readable formal specification document and Rocq definitions, while we provide a handwritten Rocq driver with a CompCert-based memory adapter to execute the generated semantics.<br/><br/></blockquote>
+                </li>
+                <li>    
+                    <b>μslice: Toward Accurate Sub-Core Allocation with eBPF</b><br/>
+                    <i>Changyuan Lin, Mohammad Shahrad (University of British Columbia)</i>
+                    <blockquote style="display:none;">The rise of cloud service models such as serverless computing and microservices has driven the adoption of fine-grained resource provisioning and billing, allowing users to request fractional CPU allocations at sub-core granularity. However, existing operating system mechanisms for CPU bandwidth control were designed for much coarser resource allocations. As a result, they can introduce substantial resource overallocation and performance variability when enforcing the small CPU shares required by modern cloud workloads.<br/><br/>
+
+                    In this paper, we investigate whether eBPF can bridge this gap by enabling more precise and responsive CPU bandwidth enforcement. We design and implement an eBPF-based scheduling framework, μμslice, that complements existing kernel mechanisms to improve the accuracy of fine-grained CPU allocation while maintaining low overhead. Our evaluation demonstrates that the proposed approach significantly reduces resource overallocation and performance variability compared to conventional OS resource control mechanisms.<br/><br/></blockquote>
+                </li>
+                <li>    
+                    <b>Pinning Isn't Enough: Gang-Scheduling Memory-Model Litmus Tests with sched_ext</b><br/>
+                    <i>Ali Siddiqui, Xiaoguang Wang (University of Illinois Chicago)</i>
+                    <blockquote style="display:none;">Litmus tests are the empirical workhorse for characterizing hardware memory models: small concurrent programs whose “weak” outcomes reveal how a processor reorders memory accesses. Their effectiveness hinges on a property the test cannot control on its own: its threads must execute simultaneously on different cores, within a window of a few cycles. On a multi-socket NUMA machine, the default Linux scheduler silently scatters those threads across sockets, collapsing the observed weak-behavior rate by roughly 8×relative to careful same-socket placement. Careful manual pinning rescues a single, hand-tuned test, but cannot keep many tests co-scheduled once a campaign saturates the machine, nor adapt to an unfamiliar topology.<br/><br/>
+
+                    We use sched_ext, the Linux extensible-scheduler interface, to make placement explicit. A spatial gang scheduler reserves dedicated, NUMA-local cores for each test, automatically matching hand-tuned pinning and eliminating the default's catastrophic placement lottery, turning a wildly bimodal rate into a high and predictable one. A temporal gang scheduler time-slices whole tests so they stay co-scheduled even under oversubscription, which neither SCHED_FIFO nor static affinity can express. Throughout we hold the synchronization primitive constant, having found that it, not the scheduler, dominates naive comparisons. We close with the experience of writing these schedulers as eBPF programs and ARM measurements confirming the targeted behaviors are real.<br/><br/></blockquote>
+                </li>
+                <li>    
+                    <b>Hydra: Rich and Scalable Functional Verification of eBPF Deployments</b><br/>
+                    <i>Lucas Castanheira, Theophilus A. Benson (Carnegie Mellon University)</i>
+                    <blockquote style="display:none;">Production eBPF deployments now run as deep, dynamically composed chains of programs --- at Meta, half of all servers run at least 180180 eBPF programs per kernel event, and a single program commonly ships in up to 1010 concurrent variants. Reasoning about the behavior of such deployments is critical: an upstream program may silently overwrite a downstream's routing decision, a variant may diverge from its siblings at an interface a peer observes, or a mandatory program may be bypassed by an early drop. Existing symbolic-execution verifiers treat each chain materialization monolithically and collapse under path explosion on real-code programs; their helper models, hand-rolled and incomplete, further erode the soundness of any verdict they produce.<br/><br/>
+
+                    We present Hydra, a verifier for eBPF deployments that (i)~reframes verification at the granularity of program graphs: each program is symbexed once into a per-path summary, and chain-level queries are answered as a single existential SMT check over the stitched summaries; (ii)~prunes each program's CFG against the queried observation before symbex runs, cutting irrelevant paths at the source; and (iii)~replaces hand-rolled helper stubs with helper models synthesized by an LLM from verbatim kernel source and ground-truthed path-by-path against the running kernel via BPF_PROG_TEST_RUN + kcov. Across 2727 synthetic chain graphs, Hydra matches a monolithic-KLEE baseline's verdict on every chain at a median 284×284× speedup (max 9,611×9,611×, aggregate 1,506×1,506×); its helper models enumerate 33--8×8× more paths per helper than ebpf-se.<br/><br/></blockquote>
+                </li>
+            </ul>
+        </section>
+
+        <section id="posters" class="papers">
+            <div class="section-header top-header"><h1>Accepted Posters</h1></div>
+            <p>
+                These posters will be presented as part of the main SOSP poster session, shared with other workshops.
+            </p>
+            <ul>
+                <li>
+                    <b>Towards eBPF Support in a Memory-Safe OS: A Case Study on Asterinas</b><br/>
+                    <i>Yi-Jia Chen, Che-Rung Lee (National Tsing Hua University)</i>
+                    <blockquote style="display:none;">eBPF has emerged as the de facto mechanism for safe kernel extensibility in Linux, yet this capability remains absent from alternative OS kernels. We present preliminary work on integrating eBPF into Asterinas, a Rust-based framekernel. We introduce an eBPF hook at the UDP packet transmission path, enabling user-defined programs to inspect packet metadata and payload, and to enforce accept/drop policies at runtime. Our prototype leverages an existing eBPF interpreter and establishes the feasibility of eBPF programmability within a non-Linux, memory-safe kernel. We characterize the design challenges arising from adapting the eBPF execution model to Asterinas' architectural constraints, and outline a development roadmap focusing on expanding hook coverage and achieving safe JIT compilation without expanding the kernel's Trusted Computing Base (TCB).<br/><br/></blockquote>
+                </li>
+                <li>
+                    <b>Context Matters: Expanding the Potential of eBPF</b><br/>
+                    <i>Carlos Machado (INESC TEC & U. Minho), Sebastião Amaro, Miguel Matos (IST Lisbon & INESC-ID), Joao Paulo, Tânia Esteves (INESC TEC & U. Minho)</i>
+                    <blockquote style="display:none;">The extended Berkeley Packet Filter (eBPF) has become a powerful platform for extending kernel functionality at runtime, yet it cannot fully propagate application-level context across the kernel I/O stack. As a result, eBPF programs lack visibility into end-to-end request intent, limiting a broad class of storage optimizations. We propose extending eBPF with first-class support for context propagation in the I/O stack. We motivate this need, illustrate use cases that demonstrate the opportunities it enables, and discuss possible design directions and the key challenges they pose.<br/><br/></blockquote>
+                </li>
+                <li>
+                    <b>Unifying eBPF across Platforms: Formal Semantics, Conformance Testing, and Specifications</b><br/>
+                    <i>Yanze Li (University of British Columbia), Reto Archermann (Technical University of Munich), Ivan Beschastnikh, Alexander J. Summers (University of British Columbia)</i>
+                    <blockquote style="display:none;">eBPF is no longer a single-platform technology. It runs in the Linux kernel, on Windows, in user space, on microcontrollers, and in blockchain virtual machines, on runtimes that were built independently. The IETF ISA standard, RFC~9669, pins down the core eBPF instructions but leaves out features that real programs depend on, such as helper functions and maps. We are building an executable formal semantics for eBPF in {F*} that explicitly distinguishes cross-platform and platform-specific behaviors. Using the BPF conformance test suite, we show that our formal semantics is consistent with existing runtimes, including uBPF, bpftime, Linux, and Windows. Currently, we are extending our semantics beyong the core {ISA} to other shared features the RFC omits. By using the metaprogramming features of F*, we can also generate a prose specification from our semantics in structured English whose meaning we prove matches the model. We envision this semantics as a practical foundation for a uniform, trustworthy eBPF across platforms.<br/><br/></blockquote>
+                </li>
+            </ul>
         </section>
     </div>
 
     <footer>
-        <p>Last updated on August 2nd, 2026.</p>
+        <p>Last updated on August 7, 2026.</p>
     </footer>
 </body>
 </html>
