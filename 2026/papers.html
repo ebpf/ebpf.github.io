@@ -6,20 +6,9 @@
     <title>eBPF'26 — Accepted Papers & Posters</title>
     <link rel="stylesheet" href="/main.css">
     <link rel="icon" type="image/x-icon" href="/favicon.png">
+    <script type="text/javascript" src="nav.js"/>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.querySelector('.hamburger');
-            const navContainer = document.querySelector('.nav-container');
-
-            hamburger.addEventListener('click', function() {
-                navContainer.classList.toggle('active');
-            });
-            navContainer.addEventListener('click', function(e) {
-                if (this.classList.contains('active')) {
-                    this.classList.remove('active');
-                }
-            });
-
             document.querySelectorAll('.papers li b').forEach(function(li) {
                 li.addEventListener('click', function() {
                     const blockquote = this.parentElement.querySelector('blockquote');
